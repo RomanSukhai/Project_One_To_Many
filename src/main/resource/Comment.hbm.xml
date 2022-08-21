@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+"https://hibernate.org/dtd/hibernate-mapping-3.0.dtd" >
+
+<hibernate-mapping package="com.journaldev.hibernate.model">
+
+	<class name="Comment" table="comment">
+		<id name="id" type="long">
+			<column name="id" />
+			<generator class="identity" />
+		</id>
+		<property name="author_name" type="string">
+			<column name="author_name"></column>
+		</property>
+		
+		
+		<many-to-one name="post" class="Post">
+			<column name="post_id" not-null="true"></column>
+		</many-to-one>
+	</class>
+
+</hibernate-mapping>

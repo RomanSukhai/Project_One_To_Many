@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"https://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+	
+<hibernate-mapping package="com.journaldev.hibernate.model">
+	<class name="Post" table="post" >
+		<id name="id" type="long">
+			<column name="post_id" />
+			<generator class="identity" />
+		</id>
+		<property name="title" type="string">
+			<column name="title" />
+		</property>
+		<set name="comment" table="comment" fetch="select">
+			<key>
+				<column name="post_id" not-null="true"></column>
+			</key>
+			<one-to-many class="Comment"/>
+		</set>
+	</class>
+	
+</hibernate-mapping>
